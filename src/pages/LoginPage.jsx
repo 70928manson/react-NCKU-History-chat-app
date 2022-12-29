@@ -1,13 +1,13 @@
 import React from 'react';
 
-import styles from "../styles/form.module.scss";
+import styles from "../styles/pages/form.module.scss";
 import Add from "../images/addAvatar.png";
 
-const RegisterPage = () => {
+const LoginPage = () => {
     return (
         <div className={styles.formContainer}>
             <div className={styles.formWrapper}>
-                <span className={styles.logo}>Manson Chat</span>
+                <span className={styles.logo}>NCKU Chat</span>
                 <span className={styles.title}>Register</span>
                 <form>
                     <input type="text" placeholder="display name"></input>
@@ -26,4 +26,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default LoginPage;
