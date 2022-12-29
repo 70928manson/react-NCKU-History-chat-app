@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-NCKU-History-chat-app/static/css/main.937fea75.css",
+    "main.js": "/react-NCKU-History-chat-app/static/js/main.71cb7830.js",
+    "index.html": "/react-NCKU-History-chat-app/index.html",
+    "main.937fea75.css.map": "/react-NCKU-History-chat-app/static/css/main.937fea75.css.map",
+    "main.71cb7830.js.map": "/react-NCKU-History-chat-app/static/js/main.71cb7830.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.937fea75.css",
+    "static/js/main.71cb7830.js"
+  ]
+}
