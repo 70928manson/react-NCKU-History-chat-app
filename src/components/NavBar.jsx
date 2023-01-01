@@ -2,6 +2,9 @@ import React from 'react';
 
 import styles from "../styles/components/navbar.module.scss";
 
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+
 const NavBar = () => {
     return (
         <div className={styles.navbar}>
@@ -9,7 +12,7 @@ const NavBar = () => {
             <div className={styles.user}>
                 <img src="https://images.pexels.com/photos/14446254/pexels-photo-14446254.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
                 <span>Jhon</span>
-                <button>logout</button>
+                <button onClick={() => signOut(auth)}>logout</button>
             </div>
         </div>
     );
