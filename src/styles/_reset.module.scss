@@ -75,3 +75,28 @@ button{
 	background-color: transparent;
 	cursor: pointer;
 }
+
+html {
+	//網頁右測scoll欄
+	
+	/* width */
+	::-webkit-scrollbar {
+	  width: 5px;
+	  border-radius: 5px;
+	}
+  
+	/* Track */
+	::-webkit-scrollbar-track {
+	  background: transparent;
+	}
+  
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+	  background: #62616194;
+	}
+  
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+	  background: darken(#62616194, 20);
+	}
+  }

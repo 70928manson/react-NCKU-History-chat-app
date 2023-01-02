@@ -6,18 +6,34 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+
+  console.log('current user: ', currentUser);
+  
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/react-NCKU-History-chat-app/login" />;
+    }
+
+    return children
+  };
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/react-NCKU-History-chat-app">
-          <Route index element={<HomePage />} />
+          <Route index 
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            } />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
         </Route>

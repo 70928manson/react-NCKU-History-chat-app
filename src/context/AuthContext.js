@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth } from "../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -11,7 +11,8 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
       const unsub = onAuthStateChanged(auth, (user) => {
         setCurrentUser(user);
-        console.log('user', user);
+        console.log('user: ', user);
+        console.log('children: ', children);
       });
   
       //避免 memory leak

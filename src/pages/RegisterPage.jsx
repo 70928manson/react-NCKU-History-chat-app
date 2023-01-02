@@ -4,7 +4,7 @@ import styles from "../styles/pages/form.module.scss";
 import Add from "../images/addAvatar.png";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, db, storage } from "../firebase";
+import { auth, db, storage } from "../utils/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
@@ -61,7 +61,7 @@ const RegisterPage = () => {
           setErr(true);
           setLoading(false);
         }
-      };
+    };
     
     return (
         <div className={styles.formContainer}>
@@ -77,10 +77,11 @@ const RegisterPage = () => {
                         <img src={Add} alt="" />
                         <span>Add an avatar</span>
                     </label>
-                    <button>Sign up</button>
+                    <button disabled={loading}>Sign up</button>
+                    {loading && "Uploading and compressing the image please wait..."}
                     {err && <span>Something went wrong</span>}
                 </form>
-                <p>You do have an account? Login</p>
+                <p>You do have an account? <Link to="/react-NCKU-History-chat-app/login">Login</Link></p>
             </div>
         </div>
     );
