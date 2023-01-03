@@ -9,13 +9,14 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import { AuthContext } from "./context/AuthContext";  //createContext
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);  //拿到值不用<Consumer>包
 
-  console.log('current user: ', currentUser);
+  // console.log('current user: ', currentUser);
   
+  //若未登入，導航至登入頁面
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
       return <Navigate to="/react-NCKU-History-chat-app/login" />;

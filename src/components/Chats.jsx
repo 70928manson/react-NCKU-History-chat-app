@@ -5,11 +5,13 @@ import styles from "../styles/components/chats.module.scss";
 import { db } from '../utils/firebase';
 import { doc, onSnapshot } from "firebase/firestore";
 import { AuthContext } from '../context/AuthContext';
+import { ChatContext } from '../context/ChatContext';
 
 const Chats = () => {
     const [chats, setChats] = useState([]);
 
     const { currentUser } = useContext(AuthContext);
+    const { dispatch } = useContext(ChatContext);
 
     //聊天室實時更新
     useEffect(() => {
@@ -27,10 +29,14 @@ const Chats = () => {
 
     console.log('chats.jsx: ', Object.entries(chats));
 
+    const handleSelect = (userInfo) => {
+        dispatch({ type: "CHANGE_USER", payload: userInfo });
+    }
+
     return (
         <div className={styles.chats}>
-            {Object.entries(chats)?.map(chat => (
-                <div className={styles.userChat} key={chat[0]}>
+            {Object.entries(chats)?.map(chat => (  //?. 可選鏈, 若chat不存在不會報錯
+                <div className={styles.userChat} key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
                     <img 
                         src={chat[1].userInfo.photoURL} 
                         alt="" 
