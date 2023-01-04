@@ -1,5 +1,5 @@
 import { doc, onSnapshot } from 'firebase/firestore';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ChatContext } from '../context/ChatContext';
 
 import styles from "../styles/components/messages.module.scss";
@@ -14,8 +14,8 @@ const Messages = () => {
     //firestore database chats
     useEffect(() => {
         const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
-            doc.exits() && setMessages(doc.data().messages)
-        })
+            doc.exists() && setMessages(doc.data().messages);
+        });
 
         return () => {
             unSub()
@@ -26,9 +26,9 @@ const Messages = () => {
 
     return (
         <div className={styles.messages}>
-            {messages.map(message => {
+            {messages.map(message => (
                 <Message message={message} key={message.id} />
-            })}
+            ))}
             {/* <Message /> */}
         </div>
     );

@@ -9,15 +9,22 @@ const Message = ({ message }) => {
     const { data } = useContext(ChatContext);
     
     return (
-        <div className={`${styles.message} ${styles.owner}`}>
-            {/* <div className={styles.messageInfo}>
-                <img src={QAQ} alt="" />
+        <div className={`${styles.message} ${ message.senderId === currentUser.uid && styles.owner}`}>
+            <div className={styles.messageInfo}>
+                <img 
+                  src={ 
+                    message.senderId === currentUser.uid 
+                    ? currentUser.photoURL 
+                    : data.user.photoURL 
+                  } 
+                  alt="" 
+                />
                 <span>just now</span>
             </div>
             <div className={styles.messageContent}>
-                <p>hello</p>
-                <img src="https://images.pexels.com/photos/14446254/pexels-photo-14446254.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
-            </div> */}
+                <p>{message.text}</p>
+                {message.img && <img src={message.img} alt="" />}
+            </div>
         </div>
     );
 };
