@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-NCKU-History-chat-app/static/css/main.2ab995b0.css",
-    "main.js": "/react-NCKU-History-chat-app/static/js/main.8ae189f3.js",
+    "main.js": "/react-NCKU-History-chat-app/static/js/main.2c141f1b.js",
     "index.html": "/react-NCKU-History-chat-app/index.html",
     "main.2ab995b0.css.map": "/react-NCKU-History-chat-app/static/css/main.2ab995b0.css.map",
-    "main.8ae189f3.js.map": "/react-NCKU-History-chat-app/static/js/main.8ae189f3.js.map"
+    "main.2c141f1b.js.map": "/react-NCKU-History-chat-app/static/js/main.2c141f1b.js.map"
   },
   "entrypoints": [
     "static/css/main.2ab995b0.css",
-    "static/js/main.8ae189f3.js"
+    "static/js/main.2c141f1b.js"
   ]
 }
