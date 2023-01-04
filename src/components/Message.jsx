@@ -31,7 +31,8 @@ const Message = ({ message }) => {
                 <span>just now</span>
             </div>
             <div className={styles.messageContent}>
-                <p>{message.text}</p>
+                {message.text !== "" && <p>{message.text}</p>}
+                {/* <p>{message.text !== "" ? message.text : '1'}</p> */}
                 {message.img && <img src={message.img} alt="" />}
             </div>
         </div>

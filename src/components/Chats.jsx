@@ -35,7 +35,7 @@ const Chats = () => {
 
     return (
         <div className={styles.chats}>
-            {Object.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map(chat => (  //?. 可選鏈, 若chat不存在不會報錯  b[1].date - a[1].date確保最新訊息在最上面   
+            {Object.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map(chat => chat[0] !== "null" && (  //?. 可選鏈, 若chat不存在不會報錯  b[1].date - a[1].date確保最新訊息在最上面   
                 <div className={styles.userChat} key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
                     <img 
                         src={chat[1].userInfo.photoURL} 

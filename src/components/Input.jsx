@@ -26,12 +26,20 @@ const Input = () => {
 
             const uploadTask = uploadBytesResumable(storageRef, img);
 
+            console.log('uploadTask', uploadTask);
+
             uploadTask.on(
                 (error) => {
-                  //TODO:Handle Error
+                    console.log('123');
+                  console.log('error', error);
                 },
                 () => {
-                  getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                  console.log('before a', uploadTask.snapshot.ref);
+                  const a = getDownloadURL(uploadTask.snapshot.ref);
+                  console.log('a', a);
+
+                  getDownloadURL(uploadTask.snapshot.ref)
+                  .then(async (downloadURL) => {
                     await updateDoc(doc(db, "chats", data.chatId), {
                       messages: arrayUnion({
                         id: uuid(),
@@ -41,18 +49,20 @@ const Input = () => {
                         img: downloadURL,
                       }),
                     });
-                  });
+                  })
                 }
             );
         }else {
-            await updateDoc(doc(db, "chats", data.chatId), {
-                messages: arrayUnion({
-                    id: uuid(),
-                    text,
-                    senderId: currentUser.uid,
-                    date: Timestamp.now(),
-                })
-            });
+            if (text !== "") {
+                await updateDoc(doc(db, "chats", data.chatId), {
+                    messages: arrayUnion({
+                        id: uuid(),
+                        text,
+                        senderId: currentUser.uid,
+                        date: Timestamp.now(),
+                    })
+                });
+            }
         };
 
         //自己
@@ -73,9 +83,9 @@ const Input = () => {
         setImg(null);
     }
     
-    const handleKey = e => {
-        e.code === "Enter" && handleSend();
-    }
+    // const handleKey = e => {
+    //     e.code === "Enter" && handleSend();
+    // }
 
     return (
         <div className={styles.input}>
@@ -83,7 +93,6 @@ const Input = () => {
                 type="text" 
                 placeholder="Type something..." 
                 onChange={e => setText(e.target.value)}
-                onKeyDown={handleKey}  
                 value={text} 
             />
             <div className={styles.send}>

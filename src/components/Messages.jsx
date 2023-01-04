@@ -26,6 +26,8 @@ const Messages = () => {
 
     return (
         <div className={styles.messages}>
+            {console.log('messages', messages)}
+            {messages.length === 0 ? <p>choose a user</p> : <p></p>}
             {messages.map(message => (
                 <Message message={message} key={message.id} />
             ))}
